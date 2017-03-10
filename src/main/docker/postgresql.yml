@@ -1,0 +1,12 @@
+version: '2'
+services:
+    3ruedelevangile-postgresql:
+        container_name: 3ruedelevangile-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/3ruedelevangile/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=3ruedelevangile
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

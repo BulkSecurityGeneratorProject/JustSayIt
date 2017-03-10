@@ -1,0 +1,22 @@
+version: '2'
+services:
+    3ruedelevangile-app:
+        image: 3ruedelevangile
+        external_links:
+            - 3ruedelevangile-postgresql:postgresql
+            - 3ruedelevangile-elasticsearch:elasticsearch
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/3ruedelevangile
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=elasticsearch:9300
+        ports:
+            - 8080:8080
+    3ruedelevangile-postgresql:
+        extends:
+            file: postgresql.yml
+            service: 3ruedelevangile-postgresql
+    3ruedelevangile-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: 3ruedelevangile-elasticsearch
